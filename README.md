@@ -1,15 +1,24 @@
 DHTMLX Gantt and Angular 2 Demo
 ===================
 
-Demo of dhtmlxGantt with Angular 2
+Demo of Gantt chart component for AngularJS 2
 
 ### How to start
 
-To run the app, do the next after cloning the repo
 
+ - clone the repository or download files
+ - install dependencies
+~~~ 
+npm install 
 ~~~
-npm install
+
+ - run server
+~~~
 ng serve
 ~~~
 
-after that, open in a browser http://localhost:4200 to check the gantt 
+ - open http://localhost:4200 in browser
+
+###  Related resouces
+ - Read full tutorial here: https://dhtmlx.com/blog/dhtmlx-gantt-chart-usage-angularjs-2-framework/
+ - Learn about dhtmlxGantt here: https://dhtmlx.com/docs/products/dhtmlxGantt/
