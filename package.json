@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^2.4.0",
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
+    "@types/dhtmlxgantt": "^4.0.33",
     "angular-in-memory-web-api": "^0.3.1",
     "core-js": "^2.4.1",
     "dhtmlx-gantt": "^4.1.0",
