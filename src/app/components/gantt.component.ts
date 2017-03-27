@@ -5,8 +5,7 @@ import {Task} from "../models/Task";
 import {Link} from "../models/Link";
 
 import "dhtmlx-gantt";
-
-declare let gantt: any;
+import {} from "@types/dhtmlxgantt";
 
 @Component({
 	selector: "gantt",
