@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {TaskService} from "../services/task.service";
 import {LinkService} from "../services/link.service";
-import {Task} from "../models/Task";
-import {Link} from "../models/Link";
+import {Task} from "../models/task";
+import {Link} from "../models/link";
 
 import "dhtmlx-gantt";
 import {} from "@types/dhtmlxgantt";
