@@ -1,26 +1,24 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {InMemoryDataService}  from './services/in-memory-data.service'
+import { AppComponent } from './app.component';
 
-import {AppComponent} from './app.component';
-import {GanttComponent} from "./components/gantt.component";
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './services/in-memory-data.service';
+import { GanttComponent } from './components/gantt.component';
 
 @NgModule({
   declarations: [
-     AppComponent,
-     GanttComponent
+    AppComponent,
+    GanttComponent
   ],
   imports: [
-     BrowserModule,
-     FormsModule,
-     HttpModule,
-     InMemoryWebApiModule.forRoot(InMemoryDataService)
+    HttpClientModule,
+    BrowserModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

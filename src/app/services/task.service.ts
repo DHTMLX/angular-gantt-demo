@@ -1,43 +1,36 @@
-import {Injectable} from "@angular/core";
-import {Task} from "../models/task";
-import {Http} from "@angular/http";
-import {ExtractData, HandleError} from "./service-helper";
-
-import 'rxjs/add/operator/toPromise';
+import {Injectable} from '@angular/core';
+import {Task} from '../models/task';
+import {HttpClient} from '@angular/common/http';
+import {HandleError} from './service-helper';
 
 @Injectable()
 export class TaskService {
-	private taskUrl = "api/tasks";
+	private taskUrl = 'api/tasks';
 
-	constructor(private http: Http) {}
+	constructor(private http: HttpClient) {}
 
 	get(): Promise<Task[]>{
 		return this.http.get(this.taskUrl)
 			.toPromise()
-			.then(ExtractData)
 			.catch(HandleError);
 	}
 
 	insert(task: Task): Promise<Task> {
-		return this.http.post(this.taskUrl, JSON.stringify(task))
+		return this.http.post(this.taskUrl, task)
 			.toPromise()
-			.then(ExtractData)
 			.catch(HandleError);
 	}
 
-
 	update(task: Task): Promise<void> {
 		return this.http
-			.put(`${this.taskUrl}/${task.id}`, JSON.stringify(task))
+			.put(`${this.taskUrl}/${task.id}`, task)
 			.toPromise()
-			.then(ExtractData)
 			.catch(HandleError);
 	}
 
 	remove(id: number): Promise<void> {
 		return this.http.delete(`${this.taskUrl}/${id}`)
 			.toPromise()
-			.then(ExtractData)
 			.catch(HandleError);
 	}
 }
