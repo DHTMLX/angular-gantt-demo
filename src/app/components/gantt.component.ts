@@ -1,37 +1,30 @@
-import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {TaskService} from "../services/task.service";
-import {LinkService} from "../services/link.service";
-import {Task} from "../models/task";
-import {Link} from "../models/link";
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { TaskService } from '../services/task.service';
+import { LinkService } from '../services/link.service';
+import { Task } from '../models/task';
+import { Link } from '../models/link';
 
-import "dhtmlx-gantt";
-import {} from "@types/dhtmlxgantt";
+import 'dhtmlx-gantt';
 
 @Component({
-	selector: "gantt",
-	styles: [
-		`
-		:host{
-			display: block;
-			height: 600px;
-			position: relative;
-			width: 100%;
-		}
-	`],
+	encapsulation: ViewEncapsulation.None,
+	selector: 'gantt',
+	styleUrls: ['./gantt.component.css'],
 	providers: [TaskService, LinkService],
-	template: "<div #gantt_here style='width: 100%; height: 100%;'></div>",
+	template: `<div #gantt_here class='gantt-chart'></div>`,
 })
 export class GanttComponent implements OnInit {
-	@ViewChild("gantt_here") ganttContainer: ElementRef;
+	@ViewChild('gantt_here') ganttContainer: ElementRef;
 
 	constructor(private taskService: TaskService, private linkService: LinkService){}
 
 	ngOnInit(){
-		gantt.config.xml_date = "%Y-%m-%d %H:%i";
+		
+		gantt.config.xml_date = '%Y-%m-%d %H:%i';
 
 		gantt.init(this.ganttContainer.nativeElement);
 
-		gantt.attachEvent("onAfterTaskAdd", (id, item) => {
+		gantt.attachEvent('onAfterTaskAdd', (id, item) => {
 			this.taskService.insert(this.serializeTask(item, true))
 				.then((response)=> {
 					if (response.id != id) {
@@ -40,15 +33,15 @@ export class GanttComponent implements OnInit {
 				});
 		});
 
-		gantt.attachEvent("onAfterTaskUpdate", (id, item) => {
+		gantt.attachEvent('onAfterTaskUpdate', (id, item) => {
 			this.taskService.update(this.serializeTask(item));
 		});
 
-		gantt.attachEvent("onAfterTaskDelete", (id) => {
+		gantt.attachEvent('onAfterTaskDelete', (id) => {
 			this.taskService.remove(id);
 		});
 
-		gantt.attachEvent("onAfterLinkAdd", (id, item) => {
+		gantt.attachEvent('onAfterLinkAdd', (id, item) => {
 			this.linkService.insert(this.serializeLink(item, true))
 				.then((response) => {
 					if(response.id != id){
@@ -57,11 +50,11 @@ export class GanttComponent implements OnInit {
 				});
 		});
 
-		gantt.attachEvent("onAfterLinkUpdate", (id, item) => {
+		gantt.attachEvent('onAfterLinkUpdate', (id, item) => {
 			this.linkService.update(this.serializeLink(item));
 		});
 
-		gantt.attachEvent("onAfterLinkDelete", (id) => {
+		gantt.attachEvent('onAfterLinkDelete', (id) => {
 			this.linkService.remove(id);
 		});
 
@@ -83,8 +76,8 @@ export class GanttComponent implements OnInit {
 		var result = {};
 
 		for (let i in data) {
-			if (i.charAt(0) == "$" || i.charAt(0) == "_") continue;
-			if(insert && i == "id") continue;
+			if (i.charAt(0) == '$' || i.charAt(0) == '_') continue;
+			if(insert && i == 'id') continue;
 			if (data[i] instanceof Date) {
 				result[i] = gantt.templates.xml_format(data[i]);
 			}
