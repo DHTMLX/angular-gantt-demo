@@ -1,6 +1,6 @@
 {
   "name": "gantt-angular",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -22,17 +22,16 @@
     "@angular/router": "~7.1.0",
     "angular-in-memory-web-api": "^0.7.0",
     "core-js": "^2.5.4",
-    "dhtmlx-gantt": "^6.0.0",
+    "dhtmlx-gantt": "^6.1.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.11.0",
+    "@angular-devkit/build-angular": "^0.13.4",
     "@angular/cli": "~7.1.0",
-    "@angular/compiler-cli": "~7.1.0",
+    "@angular/compiler-cli": "^7.2.7",
     "@angular/language-service": "~7.1.0",
-    "@types/dhtmlxgantt": "^4.0.35",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",

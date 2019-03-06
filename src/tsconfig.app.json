@@ -2,9 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": [
-      "dhtmlxgantt"
-    ]
+    "types": []
   },
   "exclude": [
     "test.ts",
