@@ -4,7 +4,7 @@ import { LinkService } from '../services/link.service';
 import { Task } from '../models/task';
 import { Link } from '../models/link';
 
-import 'dhtmlx-gantt';
+
 import { gantt } from 'dhtmlx-gantt';
 
 @Component({
