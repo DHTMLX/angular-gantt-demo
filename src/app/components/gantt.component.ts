@@ -5,6 +5,7 @@ import { Task } from '../models/task';
 import { Link } from '../models/link';
 
 import 'dhtmlx-gantt';
+import { gantt } from 'dhtmlx-gantt';
 
 @Component({
 	encapsulation: ViewEncapsulation.None,
@@ -14,7 +15,7 @@ import 'dhtmlx-gantt';
 	template: `<div #gantt_here class='gantt-chart'></div>`,
 })
 export class GanttComponent implements OnInit {
-	@ViewChild('gantt_here') ganttContainer: ElementRef;
+	@ViewChild('gantt_here', {static: true}) ganttContainer: ElementRef;
 
 	constructor(private taskService: TaskService, private linkService: LinkService) { }
 
