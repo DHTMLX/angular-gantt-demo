@@ -4,7 +4,7 @@ import { LinkService } from '../services/link.service';
 import { Task } from '../models/task';
 import { Link } from '../models/link';
 
-import 'dhtmlx-gantt';
+import { gantt } from 'dhtmlx-gantt';
 
 @Component({
 	encapsulation: ViewEncapsulation.None,
@@ -14,7 +14,7 @@ import 'dhtmlx-gantt';
 	template: `<div #gantt_here class='gantt-chart'></div>`,
 })
 export class GanttComponent implements OnInit {
-	@ViewChild('gantt_here') ganttContainer: ElementRef;
+	@ViewChild('gantt_here', { static: true }) ganttContainer!: ElementRef;
 
 	constructor(private taskService: TaskService, private linkService: LinkService) { }
 
@@ -28,12 +28,12 @@ export class GanttComponent implements OnInit {
 			task: {
 				update: (data: Task) => this.taskService.update(data),
 				create: (data: Task) => this.taskService.insert(data),
-				delete: (id) => this.taskService.remove(id)
+				delete: (id: any) => this.taskService.remove(id)
 			},
 			link: {
 				update: (data: Link) => this.linkService.update(data),
 				create: (data: Link) => this.linkService.insert(data),
-				delete: (id) => this.linkService.remove(id)
+				delete: (id: any) => this.linkService.remove(id)
 			}
 		});
 
