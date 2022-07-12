@@ -20,7 +20,7 @@ export class GanttComponent implements OnInit {
 
 	ngOnInit() {
 
-		gantt.config.xml_date = '%Y-%m-%d %H:%i';
+		gantt.config.date_format = '%Y-%m-%d %H:%i';
 
 		gantt.init(this.ganttContainer.nativeElement);
 

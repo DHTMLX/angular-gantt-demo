@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "gantt-angular2"
+  "defaultProject": "gantt-angular2",
+  "cli": {
+    "analytics": false
+  }
 }
