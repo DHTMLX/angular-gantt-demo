@@ -4,7 +4,7 @@ import { LinkService } from '../services/link.service';
 import { Task } from '../models/task';
 import { Link } from '../models/link';
 
-import { gantt } from 'dhtmlx-gantt';
+import { Gantt, GanttStatic } from "@dhx/trial-gantt";
 
 @Component({
 	encapsulation: ViewEncapsulation.None,
@@ -15,10 +15,11 @@ import { gantt } from 'dhtmlx-gantt';
 })
 export class GanttComponent implements OnInit {
 	@ViewChild('gantt_here', { static: true }) ganttContainer!: ElementRef;
-
+	private _gantt?: GanttStatic;
 	constructor(private taskService: TaskService, private linkService: LinkService) { }
 
 	ngOnInit() {
+		let gantt = Gantt.getGanttInstance();
 		gantt.config.date_format = '%Y-%m-%d %H:%i';
 
 		gantt.init(this.ganttContainer.nativeElement);
@@ -45,5 +46,10 @@ export class GanttComponent implements OnInit {
 				gantt.parse({ data, links });
 			}
 		);
+
+		this._gantt = gantt;
+	}
+	ngOnDestroy() {
+		if (this._gantt) this._gantt.destructor();
 	}
 }
