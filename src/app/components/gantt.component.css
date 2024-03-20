@@ -1,4 +1,4 @@
-@import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
+@import "@dhx/trial-gantt/codebase/dhtmlxgantt.css";
 
 .gantt-chart {
 	position: relative;

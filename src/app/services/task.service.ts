@@ -1,36 +1,32 @@
-import {Injectable} from '@angular/core';
-import {Task} from '../models/task';
-import {HttpClient} from '@angular/common/http';
-import {HandleError} from './service-helper';
+import { Injectable } from '@angular/core';
+import { Task } from '../models/task';
+import { HttpClient } from '@angular/common/http';
+import { HandleError } from './service-helper';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class TaskService {
-	private taskUrl = 'api/tasks';
+    private taskUrl = 'api/tasks';
 
-	constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-	get(): Promise<Task[]>{
-		return this.http.get(this.taskUrl)
-			.toPromise()
-			.catch(HandleError);
-	}
+    get(): Promise<Task[]>{
+        return firstValueFrom(this.http.get(this.taskUrl))
+            .catch(HandleError);
+    }
 
-	insert(task: Task): Promise<Task> {
-		return this.http.post(this.taskUrl, task)
-			.toPromise()
-			.catch(HandleError);
-	}
+    insert(task: Task): Promise<Task> {
+        return firstValueFrom(this.http.post(this.taskUrl, task))
+            .catch(HandleError);
+    }
 
-	update(task: Task): Promise<void> {
-		return this.http
-			.put(`${this.taskUrl}/${task.id}`, task)
-			.toPromise()
-			.catch(HandleError);
-	}
+    update(task: Task): Promise<void> {
+        return firstValueFrom(this.http.put(`${this.taskUrl}/${task.id}`, task))
+            .catch(HandleError);
+    }
 
-	remove(id: number): Promise<void> {
-		return this.http.delete(`${this.taskUrl}/${id}`)
-			.toPromise()
-			.catch(HandleError);
-	}
+    remove(id: number): Promise<void> {
+        return firstValueFrom(this.http.delete(`${this.taskUrl}/${id}`))
+            .catch(HandleError);
+    }
 }
