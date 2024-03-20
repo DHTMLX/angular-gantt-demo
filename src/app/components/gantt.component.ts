@@ -21,26 +21,21 @@ export class GanttComponent implements OnInit {
 	ngOnInit() {
 		let gantt = Gantt.getGanttInstance();
 		gantt.config.date_format = '%Y-%m-%d %H:%i';
-
 		gantt.init(this.ganttContainer.nativeElement);
 
-		if (!(gantt as any).$_initOnce) {
-			(gantt as any).$_initOnce = true;
-
-			const dp = gantt.createDataProcessor({
-				task: {
-					update: (data: Task) => this.taskService.update(data),
-					create: (data: Task) => this.taskService.insert(data),
-					delete: (id: any) => this.taskService.remove(id),
-				},
-				link: {
-					update: (data: Link) => this.linkService.update(data),
-					create: (data: Link) => this.linkService.insert(data),
-					delete: (id: any) => this.linkService.remove(id),
-				},
-			});
-		}
-
+		const dp = gantt.createDataProcessor({
+			task: {
+				update: (data: Task) => this.taskService.update(data),
+				create: (data: Task) => this.taskService.insert(data),
+				delete: (id: any) => this.taskService.remove(id),
+			},
+			link: {
+				update: (data: Link) => this.linkService.update(data),
+				create: (data: Link) => this.linkService.insert(data),
+				delete: (id: any) => this.linkService.remove(id),
+			},
+		});
+		
 		Promise.all([this.taskService.get(), this.linkService.get()]).then(
 			([data, links]) => {
 				gantt.parse({ data, links });
