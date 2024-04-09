@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'gantt-angular2';
+  title = 'DHTMLX Gantt with Angular';
 }

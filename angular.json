@@ -66,6 +66,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "allowedHosts": ["all"]
+          },
           "configurations": {
             "production": {
               "browserTarget": "gantt-angular2:build:production"
