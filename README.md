@@ -2,6 +2,16 @@
 
 [![dhtmlx.com](https://img.shields.io/badge/made%20by-DHTMLX-blue)](https://dhtmlx.com/)
 
+> ### Building a new Angular app with DHTMLX Gantt? Start with the official wrapper.
+>
+> DHTMLX ships an official **Angular Gantt** wrapper with a declarative component API, typed props, and first-class data binding. It's the recommended starting point for new projects.
+>
+> - Quick-start repo: [angular-gantt-quick-start](https://github.com/DHTMLX/angular-gantt-quick-start)
+> - Documentation: [docs.dhtmlx.com/gantt/integrations/angular/](https://docs.dhtmlx.com/gantt/integrations/angular/)
+> - Product page: [dhtmlxGantt for Angular](https://dhtmlx.com/docs/products/dhtmlxGantt-for-Angular/)
+>
+> This repo shows the **JS-first integration** — embedding `@dhx/trial-gantt` directly into Angular. It remains a valid option if you have a specific reason for low-level integration (Individual/GPL edition, deep customization of internals, or an existing JS-first codebase). For most new apps, prefer the wrapper above.
+
 ![DHTMLX Gantt with Angular Demo](https://raw.githubusercontent.com/DHTMLX/angular-gantt-demo/master/gantt.png)
 
 ## How to start
